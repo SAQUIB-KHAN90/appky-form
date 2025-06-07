@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Visa Application Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Commissioner", sans-serif;
+        background: url("logo.png") no-repeat center center fixed;
+        background-size: contain;
+        background-color: blue;
+        margin: 0;
+        padding: 0;
+        backdrop-filter: blur(2px);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      form {
+        width: 95%;
+        max-width: 800px;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 28px;
+        color: #fff;
+      }
+
+      label {
+        display: block;
+        margin-top: 18px;
+        font-weight: 600;
+      }
+
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        margin-top: 6px;
+        border: none;
+        border-radius: 6px;
+        font-size: 15px;
+        background: rgba(255, 255, 255, 0.95);
+        color: #000;
+      }
+
+      textarea {
+        resize: vertical;
+      }
+
+      .payment-section {
+        margin-top: 30px;
+      }
+
+      .payment-options {
+        display: flex;
+        gap: 25px;
+        margin: 10px 0;
+        flex-wrap: wrap;
+      }
+
+      .card-info {
+        display: none;
+        margin-top: 15px;
+      }
+
+      .checkbox {
+        margin-top: 25px;
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        font-size: 14px;
+      }
+
+      .checkbox input {
+        margin-top: 3px;
+      }
+
+      button {
+        width: 100%;
+        padding: 15px;
+        margin-top: 30px;
+        background-color: #005bac;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-size: 17px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #004080;
+      }
+      .checkbox {
+        margin-top: 25px;
+        font-size: 14px;
+      }
+
+      .checkbox label {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .checkbox input[type="checkbox"] {
+        margin-top: 5px;
+      }
+
+      .modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-content {
+        background: white;
+        color: black;
+        padding: 30px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      @media (max-width: 600px) {
+        form {
+          padding: 25px;
+        }
+
+        .payment-options {
+          flex-direction: column;
+        }
+
+        .checkbox {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <form id="visaForm">
+      <h2>Visa Application Form</h2>
+
+      <label>Full Name</label>
+      <input type="text" required />
+
+      <label>Date of Birth</label>
+      <input type="date" required />
+
+      <label>Nationality</label>
+      <input type="text" required />
+
+      <label>Passport Number</label>
+      <input type="text" required />
+
+      <label>Purpose of Visit</label>
+      <select required>
+        <option value="">-- Select --</option>
+        <option>Tourism</option>
+        <option>Business</option>
+        <option>Education</option>
+        <option>Medical</option>
+      </select>
+
+      <label>Supporting Documents</label>
+      <textarea rows="3" placeholder="Mention your documents"></textarea>
+
+      <label>Travel Insurance Details</label>
+      <input type="text" required />
+
+      <div class="payment-section">
+        <h3>Fees: €110</h3>
+        <label>Payment Method</label>
+        <div class="payment-options">
+          <label
+            ><input type="radio" name="payment" value="offline" />
+            Offline</label
+          >
+          <label
+            ><input type="radio" name="payment" value="online" /> Online</label
+          >
+        </div>
+
+        <div class="card-info" id="cardDetails">
+          <label>Card Number</label>
+          <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX" />
+
+          <label>Expiry Date</label>
+          <input type="month" />
+
+          <label>CVV</label>
+          <input type="password" />
+        </div>
+      </div>
+
+      <div class="checkbox">
+        <label
+          style="
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 14px;
+          "
+        >
+          <input type="checkbox" required style="margin-top: 5px" />
+          <span>
+            I agree to the <strong>privacy policy and terms</strong>. We collect
+            this information solely to process your visa application. It will
+            not be shared with third parties. Your data is stored securely and
+            used only for official purposes.
+          </span>
+        </label>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="modal" id="confirmation">
+      <div class="modal-content">
+        <h3>Your information has been recorded.</h3>
+        <p>You will receive your offer letter within 2–3 days.</p>
+        <button
+          onclick="document.getElementById('confirmation').style.display='none'"
+          >Close</button
+        >
+      </div>
+    </div>
+
+    <script>
+      const onlineRadio = document.querySelector("input[value='online']");
+      const offlineRadio = document.querySelector("input[value='offline']");
+      const cardDetails = document.getElementById("cardDetails");
+
+      onlineRadio.addEventListener("change", () => {
+        cardDetails.style.display = "block";
+      });
+
+      offlineRadio.addEventListener("change", () => {
+        cardDetails.style.display = "none";
+      });
+
+      document
+        .getElementById("visaForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          document.getElementById("confirmation").style.display = "flex";
+        });
+    </script>
+  </body>
+</html>
